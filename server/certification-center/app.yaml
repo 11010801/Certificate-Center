@@ -18,5 +18,8 @@ handlers:
 - url: /register
   script: register.app
 
+- url: /initkey
+  script: initkey.app
+
 - url: /*
   script: notfound.app

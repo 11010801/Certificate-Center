@@ -14,5 +14,5 @@ class MainPage(webapp2.RequestHandler):
         </html>
         """)
 
-app=webapp2.WSGIApplication([('/',MainPage)],
+app=webapp2.WSGIApplication([('/*',MainPage)],
                             debug=True)
