@@ -6,15 +6,13 @@ class MainPage(webapp2.RequestHandler):
         self.response.write("""
         <html>
             <head>
-                <title>certification center</title>
+                <title>login</title>
             </head>
             <body>
-                <h1 align="center">Certification Center</h1>
-                <a href="login">login</a>
-                <a href="register">register</a>
+                login page
             </body>
         </html>
         """)
 
-app=webapp2.WSGIApplication([('/',MainPage)],
+app=webapp2.WSGIApplication([('/login',MainPage)],
                             debug=True)

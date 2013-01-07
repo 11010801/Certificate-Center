@@ -11,3 +11,12 @@ handlers:
 - url: /favicon.ico
   static_files: static/images/favicon.ico
   upload: static/images/favicon.ico
+
+- url: /login
+  script: login.app
+
+- url: /register
+  script: register.app
+
+- url: /*
+  script: notfound.app

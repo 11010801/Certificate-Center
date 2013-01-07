@@ -6,12 +6,10 @@ class MainPage(webapp2.RequestHandler):
         self.response.write("""
         <html>
             <head>
-                <title>certification center</title>
+                <title>not found</title>
             </head>
             <body>
-                <h1 align="center">Certification Center</h1>
-                <a href="login">login</a>
-                <a href="register">register</a>
+                not found
             </body>
         </html>
         """)
