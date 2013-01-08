@@ -1,5 +1,5 @@
 *.py[cod]
-
+*.pem
 # C extensions
 *.so
 

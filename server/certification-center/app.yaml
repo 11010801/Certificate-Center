@@ -14,12 +14,17 @@ handlers:
 
 - url: /login
   script: login.app
+  login: required
 
 - url: /register
   script: register.app
 
-- url: /initkey
-  script: initkey.app
+- url: /admin
+  script: admin.app
+  login: admin
+  
+- url: /publickey
+  script: publickey.app
 
 - url: /*
   script: notfound.app
