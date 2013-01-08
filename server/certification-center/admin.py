@@ -11,7 +11,7 @@ class MainPage(webapp2.RequestHandler):
         keys=AdminKeys.all()
         k=keys.get()
         if not k:
-            new_keys=AdminKeys(pubkey="public key",private="privkey")
+            new_keys=AdminKeys(pubkey="public key",privkey="privkey")
             new_keys.put()
         elif k.privkey=="privkey":
             k.privkey="private key"
