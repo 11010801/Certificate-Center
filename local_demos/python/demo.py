@@ -2,28 +2,24 @@
 # -*- coding: utf-8 -*-
 
 import sys,urllib
-import rsa
+from Crypto.PublicKey import RSA
+from Crypto.Hash import MD5
 def certify():
-    if(len(sys.argv)!=3):
+    if(len(sys.argv)!=2):
         return
-    pubf,privf=sys.argv[1:]
-    pubf,privf=['pub.pem','priv.pem']
-    pubkey,privkey=rsa.newkeys(1024)
-    open(pubf,'w').write(pubkey.save_pkcs1())
-    open(privf,'w').write(privkey.save_pkcs1())
-    with open(pubf) as publicfile:
-        p=publicfile.read()
-        pubkey=rsa.PublicKey.load_pkcs1(p)
-    with open(privf) as privatefile:
-        p=privatefile.read()
-        privkey=rsa.PrivateKey.load_pkcs1(p)
-    msg="hello"
-    crypto=rsa.encrypt(msg,pubkey)
-    msg=rsa.decrypt(crypto,privkey)
-    print(msg)
-    signature=rsa.sign(msg,privkey,'SHA-1')
-    rsa.verify(msg,signature,pubkey)
-
+    privf=sys.argv[1]
+    f=open(privf,'rb')
+    privkey=RSA.importKey(f.read())
+    f.close()
+#    f=open(pubf,'rb')
+    f=urllib.urlopen('http://verify.wujianguo.org/publickey')
+    pubkey=RSA.importKey(f.read())
+    f.close()
+    text='wujianguo'
+    hash=MD5.new(text).digest()
+    signature=privkey.sign(hash,'')
+    print(pubkey.verify(hash,signature))
+ 
 def main():
     certify()
 if __name__=='__main__':
