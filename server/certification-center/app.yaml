@@ -26,5 +26,8 @@ handlers:
 - url: /publickey
   script: publickey.app
 
+- url: /doverify
+  script: doverify.app
+
 - url: /*
   script: notfound.app
