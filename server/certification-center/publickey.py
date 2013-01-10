@@ -11,7 +11,8 @@ class MainPage(webapp2.RequestHandler):
         self.response.headers['Content-Type']='text/plain'
         keys=AdminKeys.all()
         k=keys.get()
-        self.response.write(k.pubkey)
+        if k:
+            self.response.write(k.pubkey)
 
 app=webapp2.WSGIApplication([('/publickey',MainPage)],
                             debug=True)

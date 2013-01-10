@@ -25,9 +25,9 @@ class MainPage(webapp2.RequestHandler):
         htmltext=htmltext+"""
                 <form action=/admin method=POST>
                     <h3>private key</h3>
-                    <textarea name=privkey rows=20 cols=40></textarea>
+                    <textarea name=privkey rows=20 cols=60></textarea>
                     <h3>public key</h3>
-                    <textarea name=pubkey  rows=20 cols=40></textarea>
+                    <textarea name=pubkey  rows=20 cols=60></textarea>
                     <P>
                     <input type=submit>
                 </form>
