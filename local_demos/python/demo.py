@@ -4,6 +4,7 @@
 import sys,urllib
 from Crypto.PublicKey import RSA
 from Crypto.Hash import MD5
+import Crypto.Random
 def certify():
     if(len(sys.argv)!=2):
         return
@@ -11,15 +12,28 @@ def certify():
     f=open(privf,'rb')
     privkey=RSA.importKey(f.read())
     f.close()
-#    f=open(pubf,'rb')
     f=urllib.urlopen('http://verify.wujianguo.org/publickey')
     pubkey=RSA.importKey(f.read())
     f.close()
-    text='wujianguo'
-    hash=MD5.new(text).digest()
-    signature=privkey.sign(hash,'')
-    print(pubkey.verify(hash,signature))
- 
+    text=MD5.new(Crypto.Random.get_random_bytes(128)).digest()
+#    print(text)
+    info='20lsjustin89@gmail.com'+text
+#    info='21git11010801@gmail.com'+text
+    
+    signature=privkey.sign(text,'')
+    encinfo=pubkey.encrypt(info,32)
+#    print(signature)
+#    print(encinfo)
+    para=urllib.urlencode({'info':encinfo,'text':signature})
+    f=urllib.urlopen('http://verify.wujianguo.org/doverify',para)
+#    print(f.read())
+    s=f.read()
+#    print(s)
+    if MD5.new(text).digest()==privkey.decrypt(eval(s)):
+        print "OK"
+    else:
+        print "ERROR"
+    f.close()
 def main():
     certify()
 if __name__=='__main__':
