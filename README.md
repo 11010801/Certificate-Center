@@ -18,3 +18,4 @@ text:
 否则返回一串随机字符串
 
 详见local_demos
+test gfw
