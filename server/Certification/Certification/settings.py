@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # email
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -162,3 +162,5 @@ ANONYMOUS_USER_ID = -1
 
 # Test runner
 TEST_RUNNER = 'django.test.simple.DjangoTestSuiteRunner'
+import datetime
+KEY_EXPIRE_TIMEDELTA = datetime.timedelta(hours=2)
