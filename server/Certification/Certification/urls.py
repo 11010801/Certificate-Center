@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     (r'^messages/', include('userena.contrib.umessages.urls')),
     url(r'^$', 'profiles.views.promo', name='promo'),
     (r'^i18n/', include('django.conf.urls.i18n')),
+    
+    (r'^verify/',include('verify.urls')),
 )
 
 # Add media and static files

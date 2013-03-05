@@ -1,3 +1,3 @@
 from django import forms
-class VerifyUsers(forms.Form):
-    pubkey=forms.TextField()
+class AddKeyForm(forms.Form):
+    pubkey=forms.CharField(widget=forms.Textarea)

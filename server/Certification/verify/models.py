@@ -1,12 +1,13 @@
 from django.db import models
 
 # Create your models here.
-import datetime,userena
+import datetime
 from Certification.settings import *
+from profiles.models import Profile
 class VerifyUsers(models.Model):
-    user = models.ForeignKey(userena)
+    user = models.ForeignKey(Profile)
     pubkey = models.TextField(default='')
-    verify_code = models.CharField()
+    verify_code = models.CharField(max_length=80)
     build_time = models.DateTimeField(auto_now=False)
     def has_pubkey(self):
         if self.pubkey:

@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'userena',
     'userena.contrib.umessages',
     'profiles',
+    'verify',
 )
 
 LOGGING = {
