@@ -16,8 +16,6 @@ def detail(request):
         p = VerifyUsers.objects.get(user=user)
     except VerifyUsers.DoesNotExist:
         pass
-#    p=get_object_or_404(VerifyUsers,user=user)
-#    return HttpResponse("Hello, world. You're at the poll index.")
     return render_to_response('verify/detail.html',{'detail':p})
 @secure_required
 @login_required
