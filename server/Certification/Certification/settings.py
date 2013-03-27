@@ -106,9 +106,9 @@ EMAIL_HOST_PASSWORD = 'robotwujianguo'
 LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
-#AUTH_PROFILE_MODULE = 'profiles.Profile'
-#USERENA_DISABLE_PROFILE_LIST = True
-#USERENA_MUGSHOT_SIZE = 140
+AUTH_PROFILE_MODULE = 'profiles.Profile'
+USERENA_DISABLE_PROFILE_LIST = True
+USERENA_MUGSHOT_SIZE = 140
 
 ROOT_URLCONF = 'Certification.urls'
 WSGI_APPLICATION = 'Certification.wsgi.application'
@@ -129,8 +129,8 @@ INSTALLED_APPS = (
     'guardian',
     'south',
     'userena',
-#    'userena.contrib.umessages',
-#    'profiles',
+    'userena.contrib.umessages',
+    'profiles',
     'verify',
 )
 
