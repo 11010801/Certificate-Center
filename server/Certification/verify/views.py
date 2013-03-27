@@ -6,27 +6,21 @@ from django.contrib.auth.decorators import login_required
 from userena.decorators import secure_required
 from verify.models import VerifyUsers
 from verify.forms import AddKeyForm
-from profiles.models import Profile
+from userena.utils import user_model_label
 @secure_required
 @login_required
-def detail(request):
-    user=request.user
-    p=get_object_or_404(Profile,user=user)
+def changeKey(request):
+    user = request.user
+#    p = get_object_or_404(user_model_label,user=user)
     try:
         p = VerifyUsers.objects.get(user=user)
     except VerifyUsers.DoesNotExist:
-        pass
-    return render_to_response('verify/detail.html',{'detail':p})
-@secure_required
-@login_required
-def addKey(request):
-    user=request.user
-    verify_info=VerifyUsers.object.get(user=user)
-    if request.method=='POST':
-        form=addKeyForm(request.POST)
+        p = VerifyUsers(user = user)
+        p.save()
+    if request.method == 'POST':
+        form = addKeyForm(request.POST)
         if form.is_valid():
-            data=form.cleaned_data
-            verify_info.pubkey=data.pubkey
-            verify_info.save()
-            return HttpResponseRedirect(reverse('verify.views.addKey'))
-    render_to_response('verify/detail.html',{'detail':verify_info})
+            data = form.cleaned_data
+            p.pubkey = data.pubkey
+            p.save()
+    return render_to_response('verify/changekey.html',{'changeKey':p})
